@@ -12,13 +12,8 @@ def mult_after_max(*args):
     if args:
         mult = 1
         values = [float(arg) for arg in args]
-        max_item = 0
-        max_ind = 0
-        for i, item in enumerate(values):
-            if math.fabs(item) > max_item:
-                max_ind = i
-                max_item = math.fabs(item)
-        values = values[max_ind:]
+        ind = max([math.fabs(item), i] for i, item in enumerate(values))
+        values = values[ind[1]:]
         for arg in values:
             mult = mult * arg
         return mult
@@ -29,4 +24,4 @@ def mult_after_max(*args):
 if __name__ == "__main__":
     print(f'Произведение: {mult_after_max()}')
     print(f'Произведение: {mult_after_max(1, 3, 6, 4, 5)}')
-    print(f'Произведение: {mult_after_max(7, 8, 12, 76, 34, 7, 34)}')
+    print(f'Произведение: {mult_after_max(7, 8, 12, -76, 34, 7, 34)}')

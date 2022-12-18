@@ -3,8 +3,9 @@
 
 def sr_harm(*args):
     if args:
+        values = [float(arg) for arg in args]
         h = 0
-        for arg in args:
+        for arg in values:
             h += 1 / arg
         n = len(args)
         return n / h
@@ -13,5 +14,7 @@ def sr_harm(*args):
 
 
 if __name__ == "__main__":
-    arguments = list(map(float, input('Введите аргументы: ').split()))
-    print(f'Среднее геометрическое: {sr_harm(*arguments)}')
+    print(f'Среднее гармоническое: {sr_harm(1, 2, 3, 4, 5, 6)}')
+    print(f'Среднее гармоническое: {sr_harm()}')
+    print(f'Среднее гармоническое: {sr_harm(3.3, 6.5, 9.7, 8.0)}')
+
